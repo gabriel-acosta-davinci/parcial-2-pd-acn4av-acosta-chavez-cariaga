@@ -1,8 +1,8 @@
-import Navbar from "./Components/Navbar.jsx";
+import Navbar from "./components/Navbar.jsx";
 import { Routes, Route } from "react-router-dom";
-import Login from "./Components/Login.jsx";
-import About from "./Components/About.jsx";
-import Contact from "./Components/Contact.jsx";
+import Login from "./pages/Login.jsx";
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
 import './App.css';
 
 function App() {
