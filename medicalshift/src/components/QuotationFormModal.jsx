@@ -1,44 +1,18 @@
 import { useState } from "react";
+import useLocalidades from "../hooks/useLocalidades";
 
 export default function QuotationFormModal({ onClose, onSubmit }) {
     const [provincia, setProvincia] = useState("");
-
-    const localidadesPorProvincia = {
-        "Buenos Aires": ["Mar del Plata", "La Plata", "Bahía Blanca"],
-        "Ciudad Autónoma de Buenos Aires": ["Palermo", "Caballito", "Recoleta"],
-        "Catamarca": ["San Fernando del Valle de Catamarca", "Belén", "Tinogasta"],
-        "Chaco": ["Resistencia", "Villa Ángela", "Presidencia Roque Sáenz Peña"],
-        "Chubut": ["Comodoro Rivadavia", "Trelew", "Rawson"],
-        "Córdoba": ["Córdoba", "Villa María", "Río Cuarto"],
-        "Corrientes": ["Corrientes", "Goya", "Mercedes"],
-        "Entre Ríos": ["Paraná", "Concordia", "Gualeguaychú"],
-        "Formosa": ["Formosa", "Clorinda", "Pirané"],
-        "Jujuy": ["San Salvador de Jujuy", "Palpalá", "Libertador General San Martín"],
-        "La Pampa": ["Santa Rosa", "General Pico", "Toay"],
-        "La Rioja": ["La Rioja", "Chilecito", "Aimogasta"],
-        "Mendoza": ["Mendoza", "San Rafael", "Godoy Cruz"],
-        "Misiones": ["Posadas", "Oberá", "Puerto Iguazú"],
-        "Neuquén": ["Neuquén", "Cutral Có", "San Martín de los Andes"],
-        "Río Negro": ["Viedma", "Bariloche", "General Roca"],
-        "Salta": ["Salta", "Tartagal", "Orán"],
-        "San Juan": ["San Juan", "Jáchas", "Chimbas"],
-        "San Luis": ["San Luis", "Villa Mercedes", "La Punta"],
-        "Santa Cruz": ["Río Gallegos", "Caleta Olivia", "El Calafate"],
-        "Santa Fe": ["Rosario", "Santa Fe", "Rafaela"],
-        "Santiago del Estero": ["Santiago del Estero", "La Banda", "Frías"],
-        "Tierra del Fuego": ["Ushuaia", "Río Grande", "Tolhuin"],
-        "Tucumán": ["San Miguel de Tucumán", "Yerba Buena", "Tafí Viejo"]
-    };
+    const { localidadesPorProvincia, loading } = useLocalidades();
 
     const todasLasLocalidades = Object.values(localidadesPorProvincia).flat();
-
     const localidadesFiltradas = provincia
         ? localidadesPorProvincia[provincia] || []
         : todasLasLocalidades;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit(); // dispara cierre + confirmación
+        onSubmit();
     };
 
     return (
@@ -47,7 +21,7 @@ export default function QuotationFormModal({ onClose, onSubmit }) {
                 <h2 className="text-xl font-bold mb-4 text-center">Cotizador de Medicina Prepaga</h2>
 
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" placeholder="Nombre" className="border rounded-md px-4 py-2" />
+                    <input type="text" placeholder="Nombre" className="border rounded-md px-4 py-2" />
                     <input type="text" placeholder="Apellido" className="border rounded-md px-4 py-2" />
 
                     <select className="border rounded-md px-4 py-2">
@@ -58,7 +32,6 @@ export default function QuotationFormModal({ onClose, onSubmit }) {
                     </select>
 
                     <input type="date" placeholder="Fecha de nacimiento" className="border rounded-md px-4 py-2" />
-
                     <input type="text" placeholder="Número de documento" className="border rounded-md px-4 py-2" />
 
                     <select className="border rounded-md px-4 py-2">
@@ -74,6 +47,7 @@ export default function QuotationFormModal({ onClose, onSubmit }) {
                         className="border rounded-md px-4 py-2"
                         value={provincia}
                         onChange={(e) => setProvincia(e.target.value)}
+                        disabled={loading}
                     >
                         <option value="">Provincia</option>
                         {Object.keys(localidadesPorProvincia).map((prov) => (
@@ -82,7 +56,7 @@ export default function QuotationFormModal({ onClose, onSubmit }) {
                     </select>
 
                     {/* Localidad */}
-                    <select className="border rounded-md px-4 py-2">
+                    <select className="border rounded-md px-4 py-2" disabled={loading || !provincia}>
                         <option value="">Localidad</option>
                         {localidadesFiltradas.map((loc) => (
                             <option key={loc} value={loc}>{loc}</option>
@@ -91,7 +65,6 @@ export default function QuotationFormModal({ onClose, onSubmit }) {
 
                     <input type="text" placeholder="Cód. área" className="border rounded-md px-4 py-2" />
                     <input type="text" placeholder="Teléfono (sin 15)" className="border rounded-md px-4 py-2" />
-
                     <input type="email" placeholder="Email" className="border rounded-md px-4 py-2" />
 
                     <div className="col-span-1 md:col-span-2 flex justify-center mt-4">
