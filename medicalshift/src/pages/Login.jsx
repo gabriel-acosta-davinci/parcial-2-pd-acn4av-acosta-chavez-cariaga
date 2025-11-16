@@ -1,5 +1,5 @@
 import { useState } from "react";
-import loginImage from "../assets/login-image.jpg";
+import loginImage from "../assets/login/login-image.jpg";
 import logo from "../assets/logo.png";
 import LoginForm from "../components/LoginForm";
 import RegisterForm from "../components/RegisterForm";

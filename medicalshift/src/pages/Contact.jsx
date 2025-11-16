@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import ContactImage from "../assets/contact.jpg";
+import ContactImage from "../assets/contact/contact.jpg";
 import ContactForm from "../components/ContactForm";
 import ContactInfo from "../components/ContactInfo";
 import Footer from "../components/Footer.jsx";

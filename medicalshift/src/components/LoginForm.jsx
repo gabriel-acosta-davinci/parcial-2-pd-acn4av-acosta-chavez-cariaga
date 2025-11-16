@@ -1,5 +1,5 @@
-import googleLogo from "../assets/google.png"
-import facebookLogo from "../assets/facebook.png"
+import googleLogo from "../assets/social/google.png"
+import facebookLogo from "../assets/social/facebook.png"
 
 export default function LoginForm({ onSwitch }) {
     return (

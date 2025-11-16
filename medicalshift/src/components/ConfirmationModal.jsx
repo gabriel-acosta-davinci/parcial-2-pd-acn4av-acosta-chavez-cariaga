@@ -1,4 +1,4 @@
-import AnimatedAssistant from "../assets/animated-assistant.gif";
+import AnimatedAssistant from "../assets/icons/animated-assistant.gif";
 
 export default function ConfirmationModal() {
     return (

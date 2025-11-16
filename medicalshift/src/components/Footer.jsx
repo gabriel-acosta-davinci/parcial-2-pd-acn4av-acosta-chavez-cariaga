@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
-import facebookLogo from "../assets/facebook.png";
-import linkedinLogo from "../assets/linkedin.png";
-import youtubeLogo from "../assets/youtube.png";
-import instagramLogo from "../assets/instagram.png";
+import facebookLogo from "../assets/social/facebook.png";
+import linkedinLogo from "../assets/social/linkedin.png";
+import youtubeLogo from "../assets/social/youtube.png";
+import instagramLogo from "../assets/social/instagram.png";
 
 export default function Footer() {
     return (

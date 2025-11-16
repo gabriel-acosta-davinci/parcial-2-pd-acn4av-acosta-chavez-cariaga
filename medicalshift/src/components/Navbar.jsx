@@ -18,7 +18,7 @@ export default function Navbar({ onQuoteClick }) {
                 <li><Link to="/" className="hover:text-sky-400 transition">Inicio</Link></li>
                 <li><Link to="/About" className="hover:text-sky-400 transition">Quiénes Somos</Link></li>
                 <li><Link to="/Planes" className="hover:text-sky-400 transition">Planes</Link></li>
-                <li><Link to="/Cartilla" className="hover:text-sky-400 transition">Cartilla</Link></li>
+                <li><Link to="/MedicalDirectory" className="hover:text-sky-400 transition">Cartilla</Link></li>
                 <li><Link to="/Contact" className="hover:text-sky-400 transition">Contacto</Link></li>
                 <li><Link to="/Login" className="hover:text-sky-400 transition">Mi cuenta</Link></li>
                 <li>
