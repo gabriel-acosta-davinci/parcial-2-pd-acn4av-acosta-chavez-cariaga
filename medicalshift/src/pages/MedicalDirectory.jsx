@@ -9,8 +9,15 @@ import ProfessionalSearchForm from "../components/ProfessionalSearchForm.jsx";
 import ProfessionalResults from "../components/ProfessionalResults.jsx";
 import UrgencySearchForm from "../components/UrgencySearchForm";
 import UrgencyResults from "../components/UrgencyResults.jsx";
-//import PharmacySearch from "../components/PharmacySearch";
-// Agregá más componentes según los filtros que tengas
+import InpatientSearchForm from "../components/InpatientSearchForm.jsx";
+import InpatientResults from "../components/InpatientResults.jsx";
+import OdontologySearchForm from "../components/OdontologySearchForm.jsx";
+import OdontologyResults from "../components/OdontologyResults.jsx";
+import PharmacySearchForm from "../components/PharmacySearchForm";
+import PharmacyResults from "../components/PharmacyResults.jsx";
+import OpticsModal from "../components/OpticsModal.jsx";
+import VaccineSearchForm from "../components/VaccineSearchForm.jsx";
+import VaccineResults from "../components/VaccineResults.jsx";
 
 import headerImage from "../assets/directory/medical-directory.jpg";
 
@@ -19,7 +26,7 @@ export default function MedicalDirectory() {
     const [searchParams, setSearchParams] = useState(null);
     const [results, setResults] = useState([]);
 
-    // 🔄 Resetear búsqueda al cambiar de filtro
+    // Resetear búsqueda al cambiar de filtro
     useEffect(() => {
         setSearchParams(null);
         setResults([]);
@@ -63,9 +70,46 @@ export default function MedicalDirectory() {
                         )}
                     </>
                 );
+            case "Servicio de Internación":
+                return (
+                    <>
+                        <InpatientSearchForm onSearch={setSearchParams} />
+                        {searchParams && (
+                            <InpatientResults filters={searchParams} results={results} />
+                        )}
+                    </>
+                );
+            case "Odontología":
+                return (
+                    <>
+                        <OdontologySearchForm onSearch={setSearchParams} />
+                        {searchParams && (
+                            <OdontologyResults filters={searchParams} results={results} />
+                        )}
+                    </>
+                );
             case "Farmacias":
-                return <PharmacySearch />;
-            // Agregá más casos según tus filtros
+                return (
+                    <>
+                        <PharmacySearchForm onSearch={setSearchParams} />
+                        {searchParams && (
+                            <PharmacyResults filters={searchParams} results={results} />
+                        )}
+                    </>
+                );
+            case "Ópticas":
+                return (
+                    <OpticsModal onClose={() => setSelectedFilter(null)} />
+                );
+            case "Vacunatorios":
+                return (
+                    <>
+                        <VaccineSearchForm onSearch={setSearchParams} />
+                        {searchParams && (
+                            <VaccineResults filters={searchParams} results={results} />
+                        )}
+                    </>
+                );
             default:
                 return null;
         }

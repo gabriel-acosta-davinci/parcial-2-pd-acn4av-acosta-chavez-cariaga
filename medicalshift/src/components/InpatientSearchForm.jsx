@@ -1,9 +1,9 @@
 import { useState } from "react";
 import useLocalidades from "../hooks/useLocalidades";
-import useMedicSpecialties from "../hooks/useMedicSpecialties.js";
+import useInpatientSpecialties from "../hooks/useInpatientSpecialties.js";
 import usePlans from "../hooks/usePlans";
 
-export default function MedicalSearchForm({ onSearch }) {
+export default function InpatientSearchForm({ onSearch }) {
     const {
         provincias,
         localidades,
@@ -13,7 +13,7 @@ export default function MedicalSearchForm({ onSearch }) {
         setSelectedLocalidad,
     } = useLocalidades();
 
-    const { specialties } = useMedicSpecialties();
+    const { specialties } = useInpatientSpecialties();
     const { plans } = usePlans();
 
     const [selectedPlan, setSelectedPlan] = useState("");
@@ -32,7 +32,7 @@ export default function MedicalSearchForm({ onSearch }) {
     return (
         <section className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
             <h3 className="text-xl font-semibold text-sky-700 mb-4">
-                Especialidades Médicas
+                Servicio de Internación
             </h3>
 
             <form

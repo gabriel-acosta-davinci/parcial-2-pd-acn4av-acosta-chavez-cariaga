@@ -9,7 +9,7 @@ const localidadesPorProvincia = JSON.parse(
     fs.readFileSync(path.resolve("src/data/localidades.json"), "utf-8")
 );
 
-// Seeds reales/ficticios
+// Seeds
 const seedProviders = {
     "Mar del Plata": [
         {

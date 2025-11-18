@@ -10,7 +10,9 @@
     "preview": "vite preview",
     "seed:medic-providers": "node scripts/generateProvidersByMedic.js",
     "seed:diagnostic-providers": "node scripts/generateProvidersByDiagnostic.js",
-    "seed:urgency-providers": "node scripts/generateProvidersByUrgency.js"
+    "seed:urgency-providers": "node scripts/generateProvidersByUrgency.js",
+    "seed:inpatient-providers": "node scripts/generateProvidersByInpatient.js",
+    "seed:odontology-providers": "node scripts/generateProvidersByOdontology.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.15",

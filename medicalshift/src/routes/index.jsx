@@ -3,13 +3,20 @@ import Login from "../pages/Login";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import MedicalDirectory from "../pages/MedicalDirectory";
+import Plans from "../pages/Plans";
+import Download from "../pages/Download.jsx";
+import ReferralProgram from "../pages/ReferralProgram.jsx";
 
-const routes = [
+export const publicRoutes = [
     { path: "/", element: <Home /> },
-    { path: "/Login", element: <Login /> },
     { path: "/About", element: <About /> },
     { path: "/Contact", element: <Contact /> },
     { path: "/MedicalDirectory", element: <MedicalDirectory /> },
+    { path: "/Plans", element: <Plans /> },
+    { path: "/Download", element: <Download /> },
+    { path: "/ReferralProgram", element: <ReferralProgram /> }
 ];
 
-export default routes;
+export const isolatedRoutes = [
+    { path: "/Login", element: <Login /> },
+];

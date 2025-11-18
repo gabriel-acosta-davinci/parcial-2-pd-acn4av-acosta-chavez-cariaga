@@ -16,7 +16,6 @@ export default function MedicalSearchForm({ onSearch }) {
     const { specialties } = useUrgencySpecialties();
     const { plans } = usePlans();
 
-    // Estados para plan y especialidad
     const [selectedPlan, setSelectedPlan] = useState("");
     const [selectedSpecialty, setSelectedSpecialty] = useState("");
 

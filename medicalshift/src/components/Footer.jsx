@@ -39,10 +39,10 @@ export default function Footer() {
                 </div>
             </div>
 
-            {/* 🔳 Contenido principal del footer */}
+            {/* Contenido principal del footer */}
             <div className="px-6 py-10">
                 <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8">
-                    {/* Logo + branding */}
+                    {/* Logo y branding */}
                     <div className="flex flex-col items-center">
                         <img src={logo} alt="Logo" className="h-20 w-20 mb-2" />
                         <h3 className="text-4xl font-semibold text-white">Medicalshift</h3>
@@ -53,10 +53,10 @@ export default function Footer() {
                     <div>
                         <h4 className="text-white font-semibold mb-3">QUIÉNES SOMOS</h4>
                         <ul className="space-y-2 text-sm">
-                            <li><Link to="/Planes" className="hover:text-sky-400">Nosotros</Link></li>
-                            <li><Link to="/Cartilla" className="hover:text-sky-400">De dónde venimos</Link></li>
-                            <li><Link to="/Centros" className="hover:text-sky-400">Grupo Asociativo</Link></li>
-                            <li><Link to="/Contacto" className="hover:text-sky-400">Cooperativismo</Link></li>
+                            <li><Link to="/About" className="hover:text-sky-400">Nosotros</Link></li>
+                            <li><Link to="/About" className="hover:text-sky-400">De dónde venimos</Link></li>
+                            <li><Link to="/About" className="hover:text-sky-400">Grupo Asociativo</Link></li>
+                            <li><Link to="/About" className="hover:text-sky-400">Cooperativismo</Link></li>
                         </ul>
                     </div>
 
@@ -74,14 +74,14 @@ export default function Footer() {
                     <div>
                         <h4 className="text-white font-semibold mb-3">INFORMACIÓN ÚTIL</h4>
                         <ul className="space-y-2 text-sm">
-                            <li><Link to="/Planes" className="hover:text-sky-400">Emergencias</Link></li>
-                            <li><Link to="/Cartilla" className="hover:text-sky-400">Asistencia al viajero</Link></li>
+                            <li><Link to="/" className="hover:text-sky-400">Emergencias</Link></li>
+                            <li><Link to="/" className="hover:text-sky-400">Asistencia al viajero</Link></li>
                             <li><Link to="/Centros" className="hover:text-sky-400">Preguntas frecuentes</Link></li>
                             <li><Link to="/Contacto" className="hover:text-sky-400">Código de ética</Link></li>
                         </ul>
                     </div>
 
-                    {/* Contacto + redes */}
+                    {/* Contacto y redes */}
                     <div>
                         <h4 className="text-white font-semibold mb-3">Contacto</h4>
                         <ul className="space-y-2 text-sm">

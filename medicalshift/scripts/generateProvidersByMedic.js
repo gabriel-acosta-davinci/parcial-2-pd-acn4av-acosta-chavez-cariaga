@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-// Cargamos specialties y localidades
+// Cargar datos base
 const specialties = JSON.parse(
     fs.readFileSync(path.resolve("src/data/medicSpecialties.json"), "utf-8")
 );
@@ -9,7 +9,7 @@ const localidadesPorProvincia = JSON.parse(
     fs.readFileSync(path.resolve("src/data/localidades.json"), "utf-8")
 );
 
-// Seeds iniciales: 15 ejemplos distribuidos en distintas localidades/especialidades
+// Seeds
 const seedProviders = {
     "Mar del Plata": [
         {
@@ -118,7 +118,7 @@ const seedProviders = {
     ],
 };
 
-// Función generadora
+// Generador
 function buildProvidersByLocality() {
     const result = {};
 
@@ -142,7 +142,7 @@ function buildProvidersByLocality() {
     return result;
 }
 
-// Generamos el archivo JSON
+// Guardar archivo
 const providersByLocality = buildProvidersByLocality();
 fs.writeFileSync(
     path.resolve("src/data/providersByMedic.json"),

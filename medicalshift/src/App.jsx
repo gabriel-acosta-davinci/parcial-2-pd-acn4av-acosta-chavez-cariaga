@@ -1,13 +1,14 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import QuotationFormModal from "./components/QuotationFormModal";
 import ConfirmationModal from "./components/ConfirmationModal";
-import routes from "./routes";
+import { publicRoutes, isolatedRoutes } from "./routes";
 import { useState } from "react";
 import "./App.css";
 
 function App() {
+    const location = useLocation();
     const [showModal, setShowModal] = useState(false);
     const [showConfirmation, setShowConfirmation] = useState(false);
 
@@ -17,9 +18,12 @@ function App() {
         setTimeout(() => setShowConfirmation(false), 3000);
     };
 
+    // Detectar si la ruta actual es aislada
+    const isIsolated = isolatedRoutes.some((r) => r.path === location.pathname);
+
     return (
         <div className="App flex flex-col min-h-screen">
-            <Navbar onQuoteClick={() => setShowModal(true)} />
+            {!isIsolated && <Navbar onQuoteClick={() => setShowModal(true)} />}
 
             {showModal && (
                 <QuotationFormModal
@@ -29,16 +33,15 @@ function App() {
             )}
             {showConfirmation && <ConfirmationModal />}
 
-            {/* Contenido principal */}
             <div className="flex-grow">
                 <Routes>
-                    {routes.map((route, i) => (
+                    {[...publicRoutes, ...isolatedRoutes].map((route, i) => (
                         <Route key={i} path={route.path} element={route.element} />
                     ))}
                 </Routes>
             </div>
 
-            <Footer />
+            {!isIsolated && <Footer />}
         </div>
     );
 }

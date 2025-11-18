@@ -5,7 +5,7 @@ import SustainabilityCard3 from "../assets/about/sustainability-card-3.jpg";
 export default function Sustainability() {
     return (
         <div className="animate-fade-in px-6 py-12 space-y-12">
-            {/* Card 1: Presente con futuro */}
+            {/* Card 1*/}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 {/* Texto a la izquierda */}
                 <div>
@@ -19,7 +19,7 @@ export default function Sustainability() {
                 <div className="h-64 bg-gray-100 rounded-lg shadow-md bg-cover bg-center" style={{ backgroundImage: `url(${SustainabilityCard1})` }}></div>
             </div>
 
-            {/* Card 2: Salud y bienestar */}
+            {/* Card 2 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 {/* Imagen a la izquierda */}
                 <div className="h-64 bg-gray-100 rounded-lg shadow-md bg-cover bg-center" style={{ backgroundImage: `url(${SustainabilityCard2})` }}></div>
@@ -33,7 +33,7 @@ export default function Sustainability() {
                 </div>
             </div>
 
-            {/* Card 3: Integridad en cada acción */}
+            {/* Card 3 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 {/* Texto a la izquierda */}
                 <div>

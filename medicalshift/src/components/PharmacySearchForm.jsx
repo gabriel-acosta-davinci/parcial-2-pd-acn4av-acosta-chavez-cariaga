@@ -1,9 +1,8 @@
 import { useState } from "react";
 import useLocalidades from "../hooks/useLocalidades";
-import useMedicSpecialties from "../hooks/useMedicSpecialties.js";
 import usePlans from "../hooks/usePlans";
 
-export default function MedicalSearchForm({ onSearch }) {
+export default function PharmacySearchForm({ onSearch }) {
     const {
         provincias,
         localidades,
@@ -13,30 +12,29 @@ export default function MedicalSearchForm({ onSearch }) {
         setSelectedLocalidad,
     } = useLocalidades();
 
-    const { specialties } = useMedicSpecialties();
     const { plans } = usePlans();
 
     const [selectedPlan, setSelectedPlan] = useState("");
-    const [selectedSpecialty, setSelectedSpecialty] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
         onSearch({
             plan: selectedPlan,
-            specialty: selectedSpecialty,
             provincia: selectedProvincia,
             localidad: selectedLocalidad,
         });
     };
 
+    const canSearch = selectedPlan && selectedLocalidad;
+
     return (
         <section className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
             <h3 className="text-xl font-semibold text-sky-700 mb-4">
-                Especialidades Médicas
+                Buscar Farmacias
             </h3>
 
             <form
-                className="grid grid-cols-1 md:grid-cols-4 gap-4"
+                className="grid grid-cols-1 md:grid-cols-3 gap-4"
                 onSubmit={handleSubmit}
             >
                 {/* Plan */}
@@ -49,20 +47,6 @@ export default function MedicalSearchForm({ onSearch }) {
                     {plans.map((plan) => (
                         <option key={plan.id} value={plan.id}>
                             {plan.name}
-                        </option>
-                    ))}
-                </select>
-
-                {/* Especialidad */}
-                <select
-                    className="border rounded-md p-2 text-gray-700"
-                    value={selectedSpecialty}
-                    onChange={(e) => setSelectedSpecialty(e.target.value)}
-                >
-                    <option value="">Seleccioná especialidad</option>
-                    {specialties.map((spec) => (
-                        <option key={spec} value={spec}>
-                            {spec}
                         </option>
                     ))}
                 </select>
@@ -96,10 +80,17 @@ export default function MedicalSearchForm({ onSearch }) {
                         ))}
                     </select>
                 )}
-                <div className="mt-6">
+
+                {/* Botón */}
+                <div className="mt-6 col-span-full">
                     <button
                         type="submit"
-                        className="bg-sky-500 hover:bg-sky-600 text-white px-6 py-2 rounded-md transition"
+                        disabled={!canSearch}
+                        className={`px-6 py-2 rounded-md transition text-white ${
+                            canSearch
+                                ? "bg-sky-500 hover:bg-sky-600"
+                                : "bg-gray-300 cursor-not-allowed"
+                        }`}
                     >
                         Buscar
                     </button>
