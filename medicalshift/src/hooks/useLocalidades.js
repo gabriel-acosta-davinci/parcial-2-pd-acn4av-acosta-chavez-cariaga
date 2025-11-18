@@ -1,21 +1,32 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import localidadesData from "../data/localidades.json";
 
 export default function useLocalidades() {
-    const [data, setData] = useState({});
-    const [loading, setLoading] = useState(true);
+    const [provincias, setProvincias] = useState([]);
+    const [localidades, setLocalidades] = useState([]);
+    const [selectedProvincia, setSelectedProvincia] = useState("");
+    const [selectedLocalidad, setSelectedLocalidad] = useState("");
 
     useEffect(() => {
-        fetch("../src/data/localidades.json")
-            .then((res) => res.json())
-            .then((json) => {
-                setData(json);
-                setLoading(false);
-            })
-            .catch((err) => {
-                console.error("Error al cargar localidades:", err);
-                setLoading(false);
-            });
+        setProvincias(Object.keys(localidadesData));
     }, []);
 
-    return { localidadesPorProvincia: data, loading };
+    useEffect(() => {
+        if (selectedProvincia) {
+            setLocalidades(localidadesData[selectedProvincia] || []);
+            setSelectedLocalidad("");
+        } else {
+            setLocalidades([]);
+        }
+    }, [selectedProvincia]);
+
+    return {
+        localidadesPorProvincia: localidadesData, // para ContactForm
+        provincias,                               // para MedicalSearchForm
+        localidades,
+        selectedProvincia,
+        selectedLocalidad,
+        setSelectedProvincia,
+        setSelectedLocalidad,
+    };
 }

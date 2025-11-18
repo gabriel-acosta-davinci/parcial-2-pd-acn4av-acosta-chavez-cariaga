@@ -13,7 +13,7 @@ const filters = [
     { label: "Diagnóstico y Tratamiento", icon: iconMicroscope },
     { label: "Búsqueda por Profesional", icon: iconProfessional },
     { label: "Servicio de Guardia", icon: iconAmbulance },
-    { label: "Servicios de Internación", icon: iconHospital },
+    { label: "Servicio de Internación", icon: iconHospital },
     { label: "Odontología", icon: iconOdontology },
     { label: "Farmacias", icon: iconPharmacy },
     { label: "Ópticas", icon: iconOptics },

@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "seed:medic-providers": "node scripts/generateProvidersByMedic.js",
+    "seed:diagnostic-providers": "node scripts/generateProvidersByDiagnostic.js",
+    "seed:urgency-providers": "node scripts/generateProvidersByUrgency.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.15",

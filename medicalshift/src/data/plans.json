@@ -1,0 +1,6 @@
+[
+  { "id": "planA", "name": "Plan Bronce" },
+  { "id": "planB", "name": "Plan Plata" },
+  { "id": "planC", "name": "Plan Oro" },
+  { "id": "planD", "name": "Plan Platino" }
+]
