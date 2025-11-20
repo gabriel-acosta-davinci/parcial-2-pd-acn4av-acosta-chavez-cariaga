@@ -1,9 +1,9 @@
 import { useState } from "react";
 import loginImage from "../assets/login/login-image.jpg";
 import logo from "../assets/logo.png";
-import LoginForm from "../components/LoginForm";
-import RegisterForm from "../components/RegisterForm";
-import RecoveryForm from "../components/RecoveryForm";
+import LoginForm from "../components/Login/LoginForm.jsx";
+import RegisterForm from "../components/Login/RegisterForm.jsx";
+import RecoveryForm from "../components/Login/RecoveryForm.jsx";
 
 export default function Login() {
     const [activeForm, setActiveForm] = useState("login"); // "login", "register", "recovery"

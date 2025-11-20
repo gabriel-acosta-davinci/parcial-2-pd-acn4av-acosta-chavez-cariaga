@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Header from "../components/Header";
-import PlanStack from "../components/PlanStack";
-import PlanFan from "../components/PlanFan.jsx";
-import PlanDetailVisual from "../components/PlanDetailVisual";
-import PlanContact from "../components/PlanContact";
+import PlanStack from "../components/Plans/PlanStack.jsx";
+import PlanFan from "../components/Plans/PlanFan.jsx";
+import PlanDetailVisual from "../components/Plans/PlanDetailVisual.jsx";
+import PlanContact from "../components/Plans/PlanContact.jsx";
 import headerImage from "../assets/plans/plans-image.jpg";
 import plans from "../data/plans.json";
 

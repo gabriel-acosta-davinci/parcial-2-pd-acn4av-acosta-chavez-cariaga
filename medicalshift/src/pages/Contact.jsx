@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import ContactImage from "../assets/contact/contact.jpg";
-import ContactForm from "../components/ContactForm";
-import ContactInfo from "../components/ContactInfo";
+import ContactForm from "../components/Contact/ContactForm.jsx";
+import ContactInfo from "../components/Contact/ContactInfo.jsx";
 
 export default function Contact() {
     return (

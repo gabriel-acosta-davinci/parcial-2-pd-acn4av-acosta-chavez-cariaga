@@ -1,13 +1,13 @@
 import { useState } from "react";
 import Header from "../components/Header";
-import AboutNavbar from "../components/AboutNavbar";
-import Nosotros from "../components/AboutUs";
-import WhereWeComeFrom from "../components/WhereWeComeFrom.jsx";
-import AssociativeGroup from "../components/AssociativeGroup.jsx";
-import Cooperativism from "../components/Cooperativism.jsx";
-import Sustainability from "../components/Sustainability.jsx";
+import AboutNavbar from "../components/About/AboutNavbar.jsx";
+import Nosotros from "../components/About/AboutUs.jsx";
+import WhereWeComeFrom from "../components/About/WhereWeComeFrom.jsx";
+import AssociativeGroup from "../components/About/AssociativeGroup.jsx";
+import Cooperativism from "../components/About/Cooperativism.jsx";
+import Sustainability from "../components/About/Sustainability.jsx";
 import AboutImage from "../assets/about/about-us.png";
-import AboutUs from "../components/AboutUs.jsx";
+import AboutUs from "../components/About/AboutUs.jsx";
 
 export default function About() {
     const [active, setActive] = useState("Nosotros");

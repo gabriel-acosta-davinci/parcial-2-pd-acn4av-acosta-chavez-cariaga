@@ -1,5 +1,5 @@
-import HeaderCarousel from "../components/HeaderCarousel";
-import LoginHighlight from "../components/LoginHighlight.jsx";
+import HeaderCarousel from "../components/Home/HeaderCarousel.jsx";
+import LoginHighlight from "../components/Home/LoginHighlight.jsx";
 
 export default function Home() {
     return (
