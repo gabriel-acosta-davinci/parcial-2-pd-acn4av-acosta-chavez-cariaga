@@ -5,7 +5,7 @@ import Contact from "../pages/Contact";
 import MedicalDirectory from "../pages/MedicalDirectory";
 import Plans from "../pages/Plans";
 import Download from "../pages/Download.jsx";
-import ReferralProgram from "../pages/ReferralProgram.jsx";
+import NotFound from "../pages/NotFound.jsx";
 
 export const publicRoutes = [
     { path: "/", element: <Home /> },
@@ -14,7 +14,7 @@ export const publicRoutes = [
     { path: "/MedicalDirectory", element: <MedicalDirectory /> },
     { path: "/Plans", element: <Plans /> },
     { path: "/Download", element: <Download /> },
-    { path: "/ReferralProgram", element: <ReferralProgram /> }
+    { path: "/*", element: <NotFound /> },
 ];
 
 export const isolatedRoutes = [

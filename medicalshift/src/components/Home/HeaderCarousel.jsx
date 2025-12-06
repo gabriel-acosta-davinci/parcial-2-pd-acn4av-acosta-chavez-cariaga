@@ -2,7 +2,6 @@ import { useState } from "react";
 import Header from "../Header.jsx";
 import header1 from "../../assets/home/hire-your-coverage.webp";
 import header2 from "../../assets/home/download.jpg";
-import header3 from "../../assets/home/referral-program.png";
 
 const headers = [
     {
@@ -16,12 +15,6 @@ const headers = [
         title: "Renovamos nuestra app. Más fácil. Más ágil.",
         subtitle: "Descargar",
         subtitleLink: "/Download"
-    },
-    {
-        image: header3,
-        title: "Recomendá Medicalshift y ganá beneficios",
-        subtitle: "Programa Referidos",
-        subtitleLink: "/ReferralProgram"
     }
 ];
 
