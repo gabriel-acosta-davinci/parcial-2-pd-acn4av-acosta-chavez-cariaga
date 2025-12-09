@@ -1,31 +1,16 @@
 import { useState } from "react";
-import useLocalidades from "../../hooks/useLocalidades.js";
 import useUrgencySpecialties from "../../hooks/useUrgencySpecialties.js";
-import usePlans from "../../hooks/usePlans.js";
 
-export default function MedicalSearchForm({ onSearch }) {
-    const {
-        provincias,
-        localidades,
-        selectedProvincia,
-        selectedLocalidad,
-        setSelectedProvincia,
-        setSelectedLocalidad,
-    } = useLocalidades();
-
+export default function UrgencySearchForm({ onSearch, defaultPlan = "", defaultLocalidad = "" }) {
     const { specialties } = useUrgencySpecialties();
-    const { plans } = usePlans();
-
-    const [selectedPlan, setSelectedPlan] = useState("");
     const [selectedSpecialty, setSelectedSpecialty] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
         onSearch({
-            plan: selectedPlan,
+            plan: defaultPlan,
             specialty: selectedSpecialty,
-            provincia: selectedProvincia,
-            localidad: selectedLocalidad,
+            localidad: defaultLocalidad,
         });
     };
 
@@ -36,28 +21,15 @@ export default function MedicalSearchForm({ onSearch }) {
             </h3>
 
             <form
-                className="grid grid-cols-1 md:grid-cols-4 gap-4"
+                className="grid grid-cols-1 md:grid-cols-2 gap-4"
                 onSubmit={handleSubmit}
             >
-                {/* Plan */}
-                <select
-                    className="border rounded-md p-2 text-gray-700"
-                    value={selectedPlan}
-                    onChange={(e) => setSelectedPlan(e.target.value)}
-                >
-                    <option value="">¿Cuál es tu credencial?</option>
-                    {plans.map((plan) => (
-                        <option key={plan.id} value={plan.id}>
-                            {plan.name}
-                        </option>
-                    ))}
-                </select>
-
                 {/* Especialidad */}
                 <select
                     className="border rounded-md p-2 text-gray-700"
                     value={selectedSpecialty}
                     onChange={(e) => setSelectedSpecialty(e.target.value)}
+                    required
                 >
                     <option value="">Seleccioná especialidad</option>
                     {specialties.map((spec) => (
@@ -67,36 +39,7 @@ export default function MedicalSearchForm({ onSearch }) {
                     ))}
                 </select>
 
-                {/* Provincia */}
-                <select
-                    className="border rounded-md p-2 text-gray-700"
-                    value={selectedProvincia}
-                    onChange={(e) => setSelectedProvincia(e.target.value)}
-                >
-                    <option value="">Provincia</option>
-                    {provincias.map((prov) => (
-                        <option key={prov} value={prov}>
-                            {prov}
-                        </option>
-                    ))}
-                </select>
-
-                {/* Localidad */}
-                {selectedProvincia && (
-                    <select
-                        className="border rounded-md p-2 text-gray-700"
-                        value={selectedLocalidad}
-                        onChange={(e) => setSelectedLocalidad(e.target.value)}
-                    >
-                        <option value="">Localidad</option>
-                        {localidades.map((loc) => (
-                            <option key={loc} value={loc}>
-                                {loc}
-                            </option>
-                        ))}
-                    </select>
-                )}
-                <div className="mt-6">
+                <div className="md:col-span-2">
                     <button
                         type="submit"
                         className="bg-sky-500 hover:bg-sky-600 text-white px-6 py-2 rounded-md transition"

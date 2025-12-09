@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import QuotationFormModal from "./components/QuotationFormModal";
 import ConfirmationModal from "./components/ConfirmationModal";
-import { publicRoutes, isolatedRoutes } from "./routes";
+import { publicRoutes, isolatedRoutes, protectedRoutes } from "./routes";
 import { useState } from "react";
 import "./App.css";
 
@@ -18,12 +18,13 @@ function App() {
         setTimeout(() => setShowConfirmation(false), 3000);
     };
 
-    // Detectar si la ruta actual es aislada
+    // Detectar si la ruta actual es aislada o del dashboard
     const isIsolated = isolatedRoutes.some((r) => r.path === location.pathname);
+    const isDashboard = location.pathname.startsWith("/dashboard");
 
     return (
         <div className="App flex flex-col min-h-screen">
-            {!isIsolated && <Navbar onQuoteClick={() => setShowModal(true)} />}
+            {!isIsolated && !isDashboard && <Navbar onQuoteClick={() => setShowModal(true)} />}
 
             {showModal && (
                 <QuotationFormModal
@@ -35,13 +36,13 @@ function App() {
 
             <div className="flex-grow">
                 <Routes>
-                    {[...publicRoutes, ...isolatedRoutes].map((route, i) => (
+                    {[...publicRoutes, ...isolatedRoutes, ...protectedRoutes].map((route, i) => (
                         <Route key={i} path={route.path} element={route.element} />
                     ))}
                 </Routes>
             </div>
 
-            {!isIsolated && <Footer />}
+            {!isIsolated && !isDashboard && <Footer />}
         </div>
     );
 }

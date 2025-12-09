@@ -1,8 +1,11 @@
+import { useState } from "react";
 import providersByUrgency from "../../data/providersByUrgency.json";
+import GoogleMapEmbed from "./GoogleMapEmbed";
 
 export default function UrgencyResults({ filters }) {
     const { specialty, localidad } = filters;
     const data = providersByUrgency[localidad]?.[specialty];
+    const [selectedAddress, setSelectedAddress] = useState(null);
 
     if (!data) {
         return (
@@ -20,6 +23,10 @@ export default function UrgencyResults({ filters }) {
         );
     }
 
+    const fullAddress = selectedAddress 
+        ? `${selectedAddress.direccion}, ${localidad}`
+        : null;
+
     return (
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
             {/* Cards */}
@@ -27,7 +34,9 @@ export default function UrgencyResults({ filters }) {
                 {data.map((item, i) => (
                     <div
                         key={i}
-                        className="border border-gray-200 rounded-lg p-6 shadow-sm bg-white hover:shadow-md transition"
+                        className={`border rounded-lg p-6 shadow-sm bg-white hover:shadow-md transition ${
+                            selectedAddress === item ? 'border-sky-500 ring-2 ring-sky-200' : 'border-gray-200'
+                        }`}
                     >
                         <h4 className="text-lg font-semibold text-sky-700 mb-2">
                             {item.nombre}
@@ -35,7 +44,10 @@ export default function UrgencyResults({ filters }) {
                         <p className="text-gray-700">{item.direccion}</p>
                         <p className="text-gray-700">{localidad}</p>
                         <p className="text-sm text-gray-500 mt-1">Tel: {item.telefono}</p>
-                        <button className="mt-4 text-sm text-sky-500 hover:underline">
+                        <button 
+                            onClick={() => setSelectedAddress(item)}
+                            className="mt-4 text-sm text-sky-500 hover:underline"
+                        >
                             Ver en mapa
                         </button>
                     </div>
@@ -43,15 +55,12 @@ export default function UrgencyResults({ filters }) {
             </div>
 
             {/* Mapa */}
-            <div className="rounded-lg overflow-hidden shadow h-[400px]">
-                <iframe
-                    title="Mapa de prestadores"
-                    width="100%"
-                    height="100%"
-                    loading="lazy"
-                    allowFullScreen
-                    src={`https://www.google.com/maps/embed/v1/search?key=TU_API_KEY&q=${encodeURIComponent(localidad)}`}
-                ></iframe>
+            <div className="sticky top-4">
+                <GoogleMapEmbed 
+                    query={localidad}
+                    address={fullAddress}
+                    height={600}
+                />
             </div>
         </section>
     );

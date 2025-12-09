@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 import loginImage from "../assets/login/login-image.jpg";
 import logo from "../assets/logo.png";
 import LoginForm from "../components/Login/LoginForm.jsx";
@@ -7,6 +9,15 @@ import RecoveryForm from "../components/Login/RecoveryForm.jsx";
 
 export default function Login() {
     const [activeForm, setActiveForm] = useState("login"); // "login", "register", "recovery"
+    const { isAuthenticated, loading } = useAuth();
+    const navigate = useNavigate();
+
+    // Si el usuario ya está autenticado, redirigir al dashboard
+    useEffect(() => {
+        if (!loading && isAuthenticated) {
+            navigate("/dashboard", { replace: true });
+        }
+    }, [isAuthenticated, loading, navigate]);
 
     return (
         <div className="flex h-screen">
